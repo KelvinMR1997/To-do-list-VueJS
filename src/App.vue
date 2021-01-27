@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="header">
-      <Search v-on:query-change="querySearch"/>
+      <Search v-on:query-change="querySearch" />
     </div>
     <div id="main-container">
       <h2>Todos</h2>
@@ -31,17 +31,17 @@ export default {
       this.todos.push(todo);
       this.copyTodos = [...this.todos];
     },
-    querySearch(query){
-      if(query.trim ===''){
-        this.copyTodos=[...this.todos];
-      }else{
-        const temp = this.todos.filter(todo=>{
-          return todo.title.includes (query)
+    querySearch(query) {
+      if (query.trim === "") {
+        this.copyTodos = [...this.todos];
+      } else {
+        const temp = this.todos.filter((todo) => {
+          return todo.title.includes(query);
         });
 
-        this.copyTodos=[...temp]
+        this.copyTodos = [...temp];
       }
-    }
+    },
   },
   data() {
     return {
