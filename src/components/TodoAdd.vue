@@ -6,27 +6,33 @@
         v-model="title"
         placeholder="Presiona ENTER  para guardar!"
       />
+      <small id="error" class="text-danger" v-text="error" v-show="false"></small>
     </form>
   </div>
 </template>
 
 <script>
 function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 import { uuid } from "vue-uuid";
 export default {
-
   name: "TodoAdd",
   data() {
     return {
       title: "",
+      error: "🙄¡Estás intentando guardar una tarea VACIA!",
     };
   },
   methods: {
-     
     addTodo(e) {
       e.preventDefault();
+      if (this.title === "") {
+        document.getElementById("error").style = "display:block";
+        return;
+      } else {
+        document.getElementById("error").style = "display:none";
+      }
       const newTodo = {
         id: uuid.v4(),
         // title: this.title,
@@ -36,7 +42,6 @@ export default {
       this.title = "";
       this.$emit("add-todo", newTodo);
     },
-   
   },
 };
 </script>

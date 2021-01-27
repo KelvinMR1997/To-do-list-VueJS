@@ -3,7 +3,7 @@
         <div class="todo-body">
             <!-- v-bind:checked="".. Esta linea es un condicional doble simplificado, si todo.completed
             = true entonces se le aplicará la propiedad 'checked' sino se dejará vacio -->
-            <input type="checkbox" v-bind:checked="todo.completed? 'checked':'' "
+            <input style="cursor:pointer" type="checkbox" v-bind:checked="todo.completed? 'checked':'' "
             v-on:change="checkTodo">
             {{todo.title}}
         </div>
